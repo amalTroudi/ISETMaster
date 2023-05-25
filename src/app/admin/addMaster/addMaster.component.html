@@ -1,0 +1,53 @@
+<div class="body">
+    <div class="container">
+       <div class="title">Ajouter un employés</div>
+       <div class="content">
+        <form [formGroup]="addnewemployee"(submit)="submit" >
+           <div class="user-details">
+             <div class="input-box">
+               <span class="details"><h5 *ngIf="item.firstname && item.firstname!== 'null' ">{{item.firstname}}>Nom</h5> </span>
+               <input type="text" placeholder="Entrer le nom" required>
+             </div>
+             <div class="input-box">
+               <span class="details">Prénom </span>
+               <input type="text" placeholder="Entrer le prénom" required>
+             </div>
+            <!---- <div class="input-box">
+               <span class="details">Nom d'utlisateur </span>
+               <input type="text" placeholder="Entrer le nom d'utlisateur " required>
+             </div>-->
+             <div class="input-box">
+               <span class="details">Email</span>
+               <input type="text" placeholder="Entrer l'email " required>
+             </div>
+             <!----
+             <div class="input-box">
+               <span class="details">Num de télépohone</span>
+               <input type="text" placeholder="Entrer num de tel " required>
+             </div>
+             <div class="input-box">
+               <span class="details">CIN </span>
+               <input type="text" placeholder="Entrer le num CIN " required>
+             </div>
+             <div class="input-box">
+               <span class="details">Date de naissance </span>
+               <input type="date"srequired>
+             </div>
+             <div class="input-box">
+               <span class="details">Adresse</span>
+               <input type="text"placeholder="Entrer l'adresse" srequired>
+             </div>
+             <div class="input-box">
+               <span class="dtails">Grade</span>
+               <input type="text"placeholder="Entrer le Grade" srequired>
+             </div>
+             <div class="input-box">
+               <span class="dtails">Salaire</span>
+               <input type="text"placeholder="Entrer le Salaire" srequired>
+             </div>-->
+           </div>
+             <button type="submit" value="Enregister" class="button">Enregister</button>
+         </form>
+       </div>
+     </div>
+   </div>

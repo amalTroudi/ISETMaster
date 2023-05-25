@@ -1,0 +1,160 @@
+
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus'></i>
+      <span class="logo_name">Com&Dev</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="/dashboard-admin" >
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">Tableau de bord </span>
+          </a>
+        </li>
+        <li>
+          <a href="/gere" >
+            <i class='bx bx-list-ul' ></i>
+            <span class="links_name"> Gerér employées</span>
+          </a>
+        </li>
+        <li>
+          <a href="/demande"class="active">
+            <i class='bx bx-pie-chart-alt-2' ></i>
+            <span class="links_name">Demandes</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="#">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Déconnecter</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard">Tableau de bord</span>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <i class='bx bx-search' ></i>
+      </div>
+      <div class="profile-details">
+        <img src="../../assets/admin.png" alt="">
+        <span class="admin_name">Admin</span>
+        <i class='bx bx-chevron-down' ></i>
+      </div>
+    </nav>
+
+    <div class="home-content">
+      <div class="overview-boxes">
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Nombre totale</div>
+            <div class="number">40</div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">demandes accepted</div>
+            <div class="number">38</div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">demandes refused</div>
+            <div class="number">12</div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">en cours</div>
+            <div class="number">11</div>
+          </div>
+        </div>
+      </div>
+<table class="styled-table">
+    <thead>
+      <tr>
+        <th>Fisrt name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Start Date</th>
+        <th>Ended Date</th>
+        <th>Days number</th>
+        <th>Balance</th>
+        <th>Reason</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of dataArray ">
+        <td>
+        <h6 *ngIf="(item.user.lastname|| item.user.fisrtname) && (item.user.lastname ||item.user.firstname !== null) ">{{item.user.lastname}} {{item.user.firstname}}</h6>   </td>
+        <td>
+            <h6 *ngIf="item?.user.email && item?.user.email !== 'null' ">{{item.user.email}}</h6>
+        </td>
+        <td>
+
+            <button *ngIf="item.status==='encours' "
+            class="btn btn-warning">{{item.status}}</button>
+            <button *ngIf="item.status==='refused' "
+            class="btn btn-danger">{{item.status}}</button>
+            <button *ngIf="item.status==='accepted' "
+            class="btn btn-success">{{item.status}}</button>
+        </td>
+        <td>
+            <h6 *ngIf="item.start_date && item.start_date !== 'null' ">{{item.start_date}}</h6>
+        </td>
+        <td>
+            <h6 *ngIf="item.end_date && item.end_date !== 'null' ">{{item.end_date}}</h6>
+
+        </td>
+        <td><h6>{{item.days}} days</h6></td>
+        <td>
+            <button *ngIf="item.user.nbr_days>0 "
+                class="btn btn-success btn-lg "><h6>{{item.user.nbr_days}} Days in balance</h6>  </button>
+                <button *ngIf="item.user.nbr_days==0 "
+                  class="btn btn-success btn-lg"><h6>{{item.user.nbr_days}} Days </h6></button>
+                <button *ngIf="item.user.nbr_days<=0 "
+                class="btn btn-danger btn-lg"><h6>{{item.user.nbr_days}} Days </h6> </button>
+                
+        </td>
+        <td>
+          <h6>{{item.motif.reason}}</h6>
+            
+        </td>
+        <td>
+            <h6 *ngIf="item.description && item.description !== 'null' ">
+                {{item.description}}
+            </h6>
+        </td>
+        <td>
+            <h6 *ngIf="item.refus_reason && item.refus_reason !== 'null' ">
+                {{item.refus_reason}}
+            </h6>
+        </td>
+        <td>
+          <button
+          *ngIf="item.status==='encours' ||item.status==='refused'"
+          (click)="getdata(item.status,item.refus_reason, item.id)"
+          data-toggle="modal" data-target="#exampleModal1" class="update">Update </button>
+          <button
+          *ngIf="item.status==='accepted' "
+           readonly style="cursor: not-allowed;"
+
+       (click)="getdata(item.status,item.refus_reason, item.id)"
+            class="update">Update </button>
+          
+        </td>
+
+    </tr>
+
+
+    </tbody>
+    </table>
+    
